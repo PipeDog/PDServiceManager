@@ -12,14 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, PDLogLevel) {
     PDLogLevelVerbose = 0,
-    PDLogLevelDebug = PDLogLevelVerbose,
+    PDLogLevelDebug,
     PDLogLevelWarning,
     PDLogLevelError,
+    PDLogLevelFatal,
 };
 
 @protocol PDLogService <NSObject>
 
-- (void)log:(NSString *)format level:(PDLogLevel)level;
+- (void)logForLevel:(PDLogLevel)level format:(NSString *)format, ...;
 
 @end
 

@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     
     id<PDLogService> logService = [[PDServiceManager defaultManager] serviceForType:@protocol(PDLogService)];
-    [logService log:@"Method `viewDidLoad` run!" level:PDLogLevelVerbose];
+    [logService logForLevel:PDLogLevelVerbose format:@"%s", __FUNCTION__];
 }
 
 
