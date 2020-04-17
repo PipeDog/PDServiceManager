@@ -25,10 +25,10 @@
 }
 
 - (NSString *)prefixForLevel:(PDLogLevel)level {
-    static NSDictionary *prefixs = nil;
+    static NSDictionary *prefixes = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        prefixs = @{
+        prefixes = @{
             @(PDLogLevelVerbose): @"[Verbose]",
             @(PDLogLevelDebug): @"[Debug]",
             @(PDLogLevelWarning): @"[Warning]",
@@ -36,7 +36,7 @@
             @(PDLogLevelFatal): @"[Fatal]",
         };
     });
-    return prefixs[@(level)];
+    return prefixes[@(level)];
 }
 
 @end
