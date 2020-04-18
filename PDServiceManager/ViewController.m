@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PDServiceManager.h"
 #import "PDLogService.h"
+#import "PDNetService.h"
 
 @interface ViewController ()
 
@@ -19,10 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    id<PDLogService> logService = [[PDServiceManager defaultManager] serviceForType:@protocol(PDLogService)];
-    [logService logForLevel:PDLogLevelVerbose format:@"%s", __FUNCTION__];
+    [self loadData];
 }
 
+- (void)loadData {
+    id<PDLogService> logService = [[PDServiceManager defaultManager] serviceForType:@protocol(PDLogService)];
+    [logService logForLevel:PDLogLevelVerbose format:@"Request start"];
+
+    id<PDNetService> netService = [[PDServiceManager defaultManager] serviceForType:@protocol(PDNetService)];
+    [netService requestSomethingWithCallback:^(NSDictionary * _Nonnull response) {
+        [logService logForLevel:PDLogLevelVerbose format:@"Request finished, response = \n%@", response];
+    }];
+}
 
 @end

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "PDServiceManager.h"
 #import "PDLogService.h"
+#import "PDNetService.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    id<PDServiceManager> serviceManager = [PDServiceManager defaultManager];
+    
+    // Add service instance to service manager
     id<PDLogService> logService = [[PDLogService alloc] init];
-    [[PDServiceManager defaultManager] addService:logService forType:@protocol(PDLogService)];
+    [serviceManager addService:logService forType:@protocol(PDLogService)];
+    
+    // Add service class to service manager
+    [serviceManager registerClass:[PDNetService class] forType:@protocol(PDNetService)];
     
     return YES;
 }

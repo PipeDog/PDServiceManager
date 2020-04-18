@@ -18,6 +18,7 @@
 		DD4E86A32449B59C0082B2CC /* PDServiceManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4E86A22449B59C0082B2CC /* PDServiceManagerUITests.m */; };
 		DD4E86B32449B5B00082B2CC /* PDServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4E86B22449B5B00082B2CC /* PDServiceManager.m */; };
 		DD4E86B92449B6F80082B2CC /* PDLogService.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4E86B82449B6F80082B2CC /* PDLogService.m */; };
+		DD4E86C8244B097F0082B2CC /* PDNetService.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4E86C7244B097F0082B2CC /* PDNetService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		DD4E86B22449B5B00082B2CC /* PDServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDServiceManager.m; sourceTree = "<group>"; };
 		DD4E86B72449B6F80082B2CC /* PDLogService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDLogService.h; sourceTree = "<group>"; };
 		DD4E86B82449B6F80082B2CC /* PDLogService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDLogService.m; sourceTree = "<group>"; };
+		DD4E86C6244B097F0082B2CC /* PDNetService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDNetService.h; sourceTree = "<group>"; };
+		DD4E86C7244B097F0082B2CC /* PDNetService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDNetService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				DD4E867C2449B59B0082B2CC /* AppDelegate.m */,
 				DD4E86B72449B6F80082B2CC /* PDLogService.h */,
 				DD4E86B82449B6F80082B2CC /* PDLogService.m */,
+				DD4E86C6244B097F0082B2CC /* PDNetService.h */,
+				DD4E86C7244B097F0082B2CC /* PDNetService.m */,
 				DD4E867E2449B59B0082B2CC /* SceneDelegate.h */,
 				DD4E867F2449B59B0082B2CC /* SceneDelegate.m */,
 				DD4E86812449B59B0082B2CC /* ViewController.h */,
@@ -289,6 +294,7 @@
 				DD4E86832449B59B0082B2CC /* ViewController.m in Sources */,
 				DD4E867D2449B59B0082B2CC /* AppDelegate.m in Sources */,
 				DD4E86B32449B5B00082B2CC /* PDServiceManager.m in Sources */,
+				DD4E86C8244B097F0082B2CC /* PDNetService.m in Sources */,
 				DD4E868E2449B59C0082B2CC /* main.m in Sources */,
 				DD4E86802449B59B0082B2CC /* SceneDelegate.m in Sources */,
 			);

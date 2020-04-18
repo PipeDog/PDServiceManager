@@ -12,6 +12,7 @@
 #define Unlock() dispatch_semaphore_signal(self->_lock)
 
 @implementation PDServiceManager {
+    NSMutableDictionary<NSString *, Class> *_serviceClasses;
     NSMutableDictionary<NSString *, id> *_services;
     dispatch_semaphore_t _lock;
 }
@@ -28,6 +29,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _serviceClasses = [NSMutableDictionary dictionary];
         _services = [NSMutableDictionary dictionary];
         _lock = dispatch_semaphore_create(1);
     }
@@ -35,6 +37,15 @@
 }
 
 #pragma mark - PDServiceManager
+- (void)registerClass:(Class)aClass forType:(Protocol *)aProtocol {
+    if (!aClass || !aProtocol) { return; }
+    
+    Lock();
+    NSString *serviceType = NSStringFromProtocol(aProtocol);
+    _serviceClasses[serviceType] = aClass;
+    Unlock();
+}
+
 - (void)addService:(id)service forType:(Protocol *)aProtocol {
     if (!service || !aProtocol) { return; }
         
@@ -54,11 +65,19 @@
 }
 
 - (id)serviceForType:(Protocol *)aProtocol {
-    Lock();
     NSString *serviceType = NSStringFromProtocol(aProtocol);
+
+    Lock();
     id service = _services[serviceType];
     Unlock();
     
+    if (!service) {
+        Lock();
+        Class aClass = _serviceClasses[serviceType];
+        service = [[aClass alloc] init];
+        Unlock();
+    }
+
     return service;
 }
 
