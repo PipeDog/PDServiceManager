@@ -65,19 +65,22 @@
 }
 
 - (id)serviceForType:(Protocol *)aProtocol {
+    if (!aProtocol) { return nil; }
+
     NSString *serviceType = NSStringFromProtocol(aProtocol);
 
     Lock();
-    id service = _services[serviceType];
+    Class aClass = _serviceClasses[serviceType];
     Unlock();
     
-    if (!service) {
-        Lock();
-        Class aClass = _serviceClasses[serviceType];
-        service = [[aClass alloc] init];
-        Unlock();
+    if (aClass) {
+        id service = [[aClass alloc] init];
+        return service;
     }
-
+    
+    Lock();
+    id service = _services[serviceType];
+    Unlock();
     return service;
 }
 
