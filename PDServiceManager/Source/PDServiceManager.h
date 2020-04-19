@@ -13,8 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PDServiceManager <NSObject>
 
 - (void)registerClass:(Class)aClass forType:(Protocol *)aProtocol;
+- (void)unregisterClassForType:(Protocol *)aProtocol;
+
 - (void)addService:(id)service forType:(Protocol *)aProtocol;
 - (void)removeServiceForType:(Protocol *)aProtocol;
+
 - (nullable id)serviceForType:(Protocol *)aProtocol;
 
 @end

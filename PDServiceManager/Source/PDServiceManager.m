@@ -46,6 +46,15 @@
     Unlock();
 }
 
+- (void)unregisterClassForType:(Protocol *)aProtocol {
+    if (!aProtocol) { return; }
+    
+    Lock();
+    NSString *serviceType = NSStringFromProtocol(aProtocol);
+    _serviceClasses[serviceType] = nil;
+    Unlock();
+}
+
 - (void)addService:(id)service forType:(Protocol *)aProtocol {
     if (!service || !aProtocol) { return; }
         
