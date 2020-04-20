@@ -17,10 +17,6 @@
     va_end(args);
     
     NSString *prefix = [self prefixForLevel:level];
-    if (!prefix) {
-        prefix = @"[Unknown]";
-    }
-    
     NSLog(@"%@ %@", prefix, log);
 }
 
@@ -36,7 +32,7 @@
             @(PDLogLevelFatal): @"[Fatal]",
         };
     });
-    return prefixes[@(level)];
+    return prefixes[@(level)] ?: @"[Unknown]";
 }
 
 @end
